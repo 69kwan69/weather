@@ -1,0 +1,381 @@
+$space-inline-section: 6rem;
+$space-block-section: calc($space-inline-section / 2.5);
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: $space-inline-section;
+  padding-block: $space-block-section;
+
+  .wrapper {
+    display: flex;
+    gap: $space-block-section;
+  }
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 3.5fr) minmax(0, 1.5fr);
+  gap: calc($space-block-section / 2) $space-block-section;
+
+  padding-inline: $space-inline-section;
+
+  section {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 15px;
+    padding: $space-block-section;
+  }
+
+  .main {
+    grid-row: span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+// Navbar
+.location {
+  font-size: 1.5rem;
+  line-height: 1.1;
+
+  &__name {
+    font-weight: bold;
+  }
+
+  // &:has(.location__name:empty, .location__country:empty) {
+  //   width: 17rem;
+
+  //   .location__name,
+  //   .location__country {
+  //     display: block;
+  //     width: 100%;
+  //     height: 1em;
+  //     margin: 0.5em;
+
+  //     background: darkgray;
+  //     border-radius: 0.125em;
+  //   }
+
+  //   .location__country {
+  //     width: 80%;
+  //   }
+  // }
+}
+
+.search-bar {
+  position: relative;
+  width: 50ch;
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 2em;
+    translate: -50% -50%;
+
+    cursor: pointer;
+  }
+
+  .error-message {
+    position: absolute;
+    top: 50%;
+    right: 1.5em;
+    translate: 0% -50%;
+
+    color: rgba(178, 34, 34, 0.747);
+    text-align: right;
+
+    pointer-events: none;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    padding-inline: 3.5em 2em;
+
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5em;
+  }
+}
+
+.settings {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.3rem;
+  width: 2.5em;
+  aspect-ratio: 1 / 1;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  i {
+    transition: 0.3s;
+  }
+
+  .preferences {
+    $triangle-height: 10px;
+
+    position: absolute;
+    top: calc(100% + $triangle-height);
+    right: 0%;
+
+    display: none;
+    gap: 0.7rem;
+    flex-direction: column;
+
+    width: 10rem;
+    padding: calc($space-block-section / 2);
+
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+    &::after {
+      position: absolute;
+      right: 9%;
+      top: calc(0px - $triangle-height);
+      content: '';
+      width: 0;
+      border-left: $triangle-height solid transparent;
+      border-right: $triangle-height solid transparent;
+      border-bottom: $triangle-height solid #ccc;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .switch {
+      position: relative;
+      background: #ccc;
+      border: 0.2em solid #ccc;
+      border-radius: 5em;
+
+      // padding: 0.5em 0;
+      width: 2em;
+      height: 1em;
+
+      isolation: isolate;
+
+      cursor: pointer;
+
+      .indicator {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 50%;
+        height: 100%;
+
+        border-radius: 5em;
+        background: white;
+
+        transform-origin: 0 50%;
+        translate: 100% -50%;
+        transition: 0.2s;
+      }
+    }
+  }
+
+  .option:is([data-value='f'], [data-value='mph']) {
+    .indicator {
+      translate: 0% -50%;
+    }
+  }
+
+  &:hover {
+    i {
+      rotate: 90deg;
+    }
+
+    .preferences {
+      display: flex;
+    }
+  }
+}
+
+// Main
+.current {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0 $space-block-section;
+  font-size: 1rem;
+
+  &__icon {
+    height: 8em;
+    object-fit: contain;
+    grid-row: span 2;
+  }
+
+  &__temp {
+    align-self: center;
+    font-size: 3.5em;
+  }
+
+  &__text {
+    font-size: 1.7em;
+  }
+}
+
+// Forecast
+.switch-forecast {
+  $bg: #ccc;
+
+  display: flex;
+  justify-content: space-around;
+
+  background: $bg;
+  border: 0.4em solid $bg;
+  border-radius: 5em;
+
+  padding: 0.5em 0;
+  width: 9em;
+
+  position: relative;
+  isolation: isolate;
+
+  cursor: pointer;
+
+  .indicator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 50%;
+    height: 100%;
+
+    background: white;
+    border-radius: 5em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    transform-origin: 0 50%;
+    translate: 100% -50%;
+    transition: 0.2s;
+  }
+
+  .mode {
+    text-align: center;
+    width: 50%;
+    z-index: 1;
+  }
+}
+
+.forecast-list {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  overflow: scroll;
+  padding: 1em 0.5em;
+}
+
+.forecast {
+  $space-forecast: 1em;
+  font-size: 1rem;
+
+  position: relative;
+  width: 13em;
+  padding: $space-forecast;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+  text-align: right;
+
+  &__temp {
+    font-size: 1.8em;
+  }
+
+  &__time {
+    font-size: 1em;
+    position: absolute;
+    right: $space-forecast;
+    bottom: $space-forecast;
+  }
+
+  &__icon {
+    position: relative;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+// Additional
+.additional {
+  display: flex;
+  align-items: center;
+  gap: $space-block-section;
+
+  font-size: 1.5rem;
+
+  &__icon {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    font-size: 0.7em;
+  }
+  &__data {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+// Loading screen
+.loading-screen {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  background: #ffffffdd;
+
+  .circle {
+    $clr-bg-circle: darkgrey;
+    $clr-accent-circle: rgb(55, 53, 53);
+    width: 8rem;
+    aspect-ratio: 1;
+
+    border-top: 1rem solid $clr-accent-circle;
+    border-left: 1rem solid $clr-bg-circle;
+    border-right: 1rem solid $clr-bg-circle;
+    border-bottom: 1rem solid $clr-bg-circle;
+    border-radius: 50%;
+  }
+
+  &.active {
+    display: flex;
+
+    .circle {
+      animation: spinning 1.5s infinite;
+    }
+
+    @keyframes spinning {
+      from {
+        rotate: 0deg;
+      }
+
+      to {
+        rotate: 360deg;
+      }
+    }
+  }
+}

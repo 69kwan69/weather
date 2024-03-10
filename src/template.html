@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script
+      src="https://kit.fontawesome.com/1e67b47405.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="location">
+        <span class="location__name"></span
+        ><span class="location__country"></span>
+        <p class="location__localtime"></p>
+      </div>
+      <div class="wrapper">
+        <div class="search-bar">
+          <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          <input class="search-input" type="search" placeholder="Search city" />
+          <p class="error-message"></p>
+        </div>
+        <div class="settings">
+          <i class="fa-solid fa-fw fa-gear"></i>
+          <div class="preferences">
+            <div class="option" data-name="temp" data-value="c">
+              <div class="switch">
+                <div class="indicator"></div>
+              </div>
+              <span class="unit">C</span>
+            </div>
+
+            <div class="option" data-name="vel" data-value="kph">
+              <div class="switch">
+                <div class="indicator"></div>
+              </div>
+              <span class="unit">Km/h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="main">
+        <div class="current">
+          <img class="current__icon" />
+          <span class="current__temp"></span>
+          <span class="current__text"></span>
+        </div>
+
+        <div class="switch switch-forecast" data-forecast-mode="hourly">
+          <div class="indicator"></div>
+          <p class="mode">Daily</p>
+          <p class="mode">Hourly</p>
+        </div>
+
+        <ul class="forecast-list"></ul>
+      </section>
+
+      <section class="additional">
+        <div class="additional__icon">
+          <i class="fa-solid fa-fw fa-wind"></i>
+        </div>
+        <div class="additional__text">
+          <p>Wind speed</p>
+          <p class="additional__data wind-speed"></p>
+        </div>
+      </section>
+
+      <section class="additional">
+        <div class="additional__icon">
+          <i class="fa-solid fa-fw fa-droplet"></i>
+        </div>
+        <div class="additional__text">
+          <p>Humidity</p>
+          <p class="additional__data humidity"></p>
+        </div>
+      </section>
+
+      <section class="additional">
+        <div class="additional__icon">
+          <i class="fa-solid fa-fw fa-sun"></i>
+        </div>
+        <div class="additional__text">
+          <p>UV Index</p>
+          <p class="additional__data uv"></p>
+        </div>
+      </section>
+    </main>
+
+    <div class="loading-screen">
+      <div class="circle"></div>
+    </div>
+  </body>
+</html>

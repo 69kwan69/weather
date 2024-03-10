@@ -1,0 +1,278 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: 6rem;
+  padding-block: 2.4rem;
+}
+nav .wrapper {
+  display: flex;
+  gap: 2.4rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 3.5fr) minmax(0, 1.5fr);
+  gap: 1.2rem 2.4rem;
+  padding-inline: 6rem;
+}
+main section {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 15px;
+  padding: 2.4rem;
+}
+main .main {
+  grid-row: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.location {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.location__name {
+  font-weight: bold;
+}
+
+.search-bar {
+  position: relative;
+  width: 50ch;
+}
+.search-bar i {
+  position: absolute;
+  top: 50%;
+  left: 2em;
+  translate: -50% -50%;
+  cursor: pointer;
+}
+.search-bar .error-message {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: -50% -50%;
+  color: firebrick;
+  text-align: right;
+}
+.search-bar input {
+  width: 100%;
+  height: 100%;
+  padding-inline: 3.5em 2em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5em;
+}
+
+.settings {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  width: 2.5em;
+  aspect-ratio: 1/1;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.settings i {
+  transition: 0.3s;
+}
+.settings .preferences {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0%;
+  display: none;
+  gap: 0.7rem;
+  flex-direction: column;
+  width: 10rem;
+  padding: 1.2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.settings .preferences::after {
+  position: absolute;
+  right: 9%;
+  top: -10px;
+  content: "";
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ccc;
+}
+.settings .preferences .option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.settings .preferences .switch {
+  position: relative;
+  background: #ccc;
+  border: 0.2em solid #ccc;
+  border-radius: 5em;
+  width: 2em;
+  height: 1em;
+  isolation: isolate;
+  cursor: pointer;
+}
+.settings .preferences .switch .indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 50%;
+  height: 100%;
+  border-radius: 5em;
+  background: white;
+  transform-origin: 0 50%;
+  translate: 100% -50%;
+  transition: 0.2s;
+}
+.settings .option:is([data-value=f], [data-value=mph]) .indicator {
+  translate: 0% -50%;
+}
+.settings:hover i {
+  rotate: 90deg;
+}
+.settings:hover .preferences {
+  display: flex;
+}
+
+.current {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0 2.4rem;
+  font-size: 1rem;
+}
+.current__icon {
+  height: 8em;
+  -o-object-fit: contain;
+     object-fit: contain;
+  grid-row: span 2;
+}
+.current__temp {
+  align-self: center;
+  font-size: 3.5em;
+}
+.current__text {
+  font-size: 1.7em;
+}
+
+.switch-forecast {
+  display: flex;
+  justify-content: space-around;
+  background: #ccc;
+  border: 0.4em solid #ccc;
+  border-radius: 5em;
+  padding: 0.5em 0;
+  width: 9em;
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+}
+.switch-forecast .indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 50%;
+  height: 100%;
+  background: white;
+  border-radius: 5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transform-origin: 0 50%;
+  translate: 100% -50%;
+  transition: 0.2s;
+}
+.switch-forecast .mode {
+  text-align: center;
+  width: 50%;
+  z-index: 1;
+}
+
+.forecast-list {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  overflow: scroll;
+  padding: 1em 0.5em;
+}
+
+.forecast {
+  font-size: 1rem;
+  position: relative;
+  width: 13em;
+  padding: 1em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+  text-align: right;
+}
+.forecast__temp {
+  font-size: 1.8em;
+}
+.forecast__time {
+  font-size: 1em;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+.forecast__icon {
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+.additional {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  font-size: 1.5rem;
+}
+.additional__icon {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.additional__text {
+  font-size: 0.7em;
+}
+.additional__data {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8666666667);
+}
+.loading-screen .circle {
+  width: 8rem;
+  aspect-ratio: 1;
+  border-top: 1rem solid rgb(55, 53, 53);
+  border-left: 1rem solid darkgrey;
+  border-right: 1rem solid darkgrey;
+  border-bottom: 1rem solid darkgrey;
+  border-radius: 50%;
+}
+.loading-screen.active {
+  display: flex;
+}
+.loading-screen.active .circle {
+  animation: spinning 1.5s infinite;
+}
+@keyframes spinning {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}/*# sourceMappingURL=style.css.map */
