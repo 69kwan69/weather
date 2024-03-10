@@ -1,5 +1,5 @@
 const API_KEY = '5746854e984c4eaaa0544917231409';
-const API_URL = 'http://api.weatherapi.com/v1';
+const API_URL = 'https://api.weatherapi.com/v1';
 const API_METHOD = 'forecast.json';
 
 async function getWeatherInformation(place, days = '5') {
@@ -13,7 +13,6 @@ async function getWeatherInformation(place, days = '5') {
 
   // Weather current
   const dataCurrent = data.current;
-  console.log(data.current);
   const current = {
     temp_c: dataCurrent.temp_c,
     temp_f: dataCurrent.temp_f,
